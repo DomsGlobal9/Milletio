@@ -5,7 +5,7 @@ import "./HealthyResponsive.css";
 import Healthy_crop1 from "../../assets/Healthy_crop_img.jpg";
 import Healthy_crop2 from "../../assets/Healthy_crop_img2.jpg";
 import Healthy_crop3 from "../../assets/Healthy_crop_img3.jpg"
-import promoVideo from "../../assets/milletio_crops_video.mp4"
+// import promoVideo from "../../assets/milletio_crops_video.mp4"
 const DesktopHealthy = () => (
    <div className="healthy-container">
       <div className="healthy-copy">

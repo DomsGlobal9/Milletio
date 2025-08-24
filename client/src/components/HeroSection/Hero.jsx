@@ -82,7 +82,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./hero.css";
 
-import heroVideoMobile   from "../../assets/insta video.mp4"; // ⬅️ replace path/filename if needed
+import heroVideoMobile   from "../../assets/insta_video_m.mp4"; // ⬅️ replace path/filename if needed
 import heroVideoDesktop from "../../assets/milletio_hero_section_video.mp4"
 
 const MOBILE_QUERY = "(max-width: 767px)";

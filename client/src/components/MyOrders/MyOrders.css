@@ -1,0 +1,120 @@
+/* 0. palette & base --------------------------------------------------- */
+:root {
+  --cream:  #fff7e6;
+  --field:  #fbf3dd;
+  --gold:   #8b6a10;
+  --muted:  #666;
+  --radius: 0.8rem;
+  font-family: "Inter", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body { margin: 0; }
+
+.orders {
+  background: var(--cream);
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+/* 1. page header ------------------------------------------------------ */
+.orders__header {
+  font-weight: 600;
+  font-family: Merienda;
+  margin-bottom: 1.4rem;
+  font-size: 1rem;
+  color: var(--gold);
+  border-bottom: 1px solid #d9d0bd;
+  padding-bottom: 0.8rem;
+}
+
+/* 2. order card ------------------------------------------------------- */
+.orderCard {
+ background: rgba(248, 233, 205, 1);
+
+  border-radius: var(--radius);
+  padding: 1rem;
+  font-family: Poppins;
+  margin-bottom: 1rem;
+}
+
+.orderCard h4 {
+  font-size: 0.9rem;
+  margin: 0 0 0.8rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* thumbnails + count + arrow row */
+.orderCard__row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+/* thumbs */
+.orderCard__thumbs {
+  display: flex;
+  gap: 0.4rem;
+}
+.orderCard__thumbs img {
+  width: 45px;
+  height: 45px;
+  border-radius: 0.4rem;
+  object-fit: cover;
+}
+
+/* +N items */
+.orderCard__count {
+  font-size: 1rem;
+  font-weight: 400;
+  font-family: Poppins;
+  color: var(--text);
+  margin-left: auto;
+}
+
+/* arrow icon */
+.orderCard__arrow {
+  width: 18px;
+  height: 18px;
+}
+
+/* buttons */
+.orderCard__actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Poppins;
+  gap: 0.75rem;
+}
+.orderCard__btn {
+  flex: 1;
+  padding: 0.5rem 0;
+  font-size: 0.90rem;
+  border-radius: 0.70rem;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+.reorder {background: rgba(197, 137, 64, 1);
+ color: #fff; font-weight: 500; display: flex; justify-content: center; align-items: center;}
+.rate    { background: rgba(248, 233, 205, 1);
+; border: 1px solid rgba(130, 83, 0, 1); color: rgba(130, 83, 0, 1); font-weight: 400;
+ }
+
+/* 3. MEDIA QUERIES ---------------------------------------------------- */
+
+/* ≥ 600 px — tablets */
+@media (min-width: 600px) {
+  .orders      { max-width: 520px; margin: auto; padding: 2rem 1.5rem; }
+  .orderCard   { margin-bottom: 1.25rem; }
+  .orderCard__thumbs img { width: 55px; height: 55px; }
+}
+
+/* ≥ 960 px — desktops */
+@media (min-width: 960px) {
+  .orders      { max-width: 720px; }
+  .orderCard__thumbs img { width: 60px; height: 60px; }
+}

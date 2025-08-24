@@ -1,0 +1,15 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* background: rgba(255, 242, 204, 1); */
+
+}
+body{
+  background: rgba(255, 242, 204, 1);
+}
+@media (min-width: 1024px) {
+  body {
+    background-color: #ffffff;
+  }
+}

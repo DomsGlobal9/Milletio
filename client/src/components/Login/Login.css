@@ -1,0 +1,139 @@
+/* 0. palette & base ---------------------------------------------------- */
+:root {
+  --cream: #fff7e6;
+  --gold:  #8b6a10;
+  --field: #f5eddc;
+  --text:  #2b2b2b;
+  --muted: #777;
+  --radius: 0.8rem;
+  font-family: "Inter", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+
+
+body { margin: 0; }
+
+/* 1. layout (mobile-first) ------------------------------------------- */
+.login {
+  min-height: 100vh;
+  background: var(--cream);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.25rem;
+}
+
+.login__logo {
+  width: 160px;
+  margin: 0 auto 1.5rem;
+}
+.ph_input{
+width: 300px;
+border-radius: 8px;
+margin: 5px;
+}
+.login__keep input {
+  accent-color: var(--gold);   /* makes the check‑box fill brown on :checked */
+}
+.login__card {
+  width: 100%;
+  max-width: 320px;
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+
+/* OTP input */
+.login__otp {
+  width: 100%;
+  margin: 0.8rem 0 1rem;
+  padding: 0.6rem 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #d8d8d8;
+  border-radius: 0.45rem;
+}
+
+.login__otp:focus { outline: 2px solid var(--gold); }
+
+.login__title    { margin: 0 0 0.25rem; font-size: 1.1rem; }
+.login__subtitle { margin: 0 0 1rem;   font-size: 0.85rem; color: var(--muted); padding-bottom: 24px; }
+
+.login__label { font-size: 0.8rem; font-weight: 600; }
+
+.login__phoneWrap {
+padding-bottom: 6px;
+}
+.login__phoneWrap input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 0.9rem;
+}
+.login__phoneWrap input:focus { outline: none; }
+.login__flag        { width: 20px; height: 14px; }
+.login__countryCode { font-size: 0.9rem; }
+
+.login__error { color: #d32f2f; font-size: 0.75rem; margin-top: 0.25rem; display: block; }
+
+.login__keep {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  margin: 0.9rem 0;
+}
+
+.login__btn {
+  display: block;
+  width: 100%;
+  background: var(--gold);
+  color: #fff;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.55rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login__divider {
+  margin: 1rem 0 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+.login__divider::before,
+.login__divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #d8d8d8;
+}
+
+.login__google {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: #fff;
+  border: 1px solid #d8d8d8;
+  border-radius: 2rem;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.login__google img { width: 18px; height: 18px; }
+
+/* 2. larger screens --------------------------------------------------- */
+@media (min-width: 600px) {
+  .login__logo  { width: 190px; margin-bottom: 2rem; }
+  .login__card  { padding: 1.75rem 2rem; }
+}
+
+@media (min-width: 960px) {
+  .login__card { max-width: 380px; }
+}

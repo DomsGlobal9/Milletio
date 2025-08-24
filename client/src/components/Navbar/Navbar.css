@@ -1,0 +1,232 @@
+.navbar {
+  --height: 70px;
+  background: rgba(255, 233, 195, 1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--height);
+  padding: 0 1rem;
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.25);
+  position: sticky;          /* stays at the top when scrolling */
+  top: 0;
+  z-index: 100;
+}
+.cart_and_heart{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+.scrolling_bar{
+  background-color: black;
+  color: white;
+  padding: 5px ;
+  font-family: Poppins;
+}
+.scrolling_bar h3{
+  font-weight: 500;
+}
+
+/* ===== ICON BUTTONS (hamburger & profile) ===== */
+.navbar__icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.navbar__icon-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* ===== LOGO ===== */
+.navbar__logo img {
+  height: 50px;
+  width: auto;
+}
+
+/* ───────────────────────────────────────────── */
+/*  SIDEBAR & OVERLAY – adds behaviour only      */
+/* ───────────────────────────────────────────── */
+
+/* backdrop */
+.sidebar__overlay {
+  position: fixed;
+  inset: 0;
+  border: 2px solid black;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 999;                 /* under the drawer */
+}
+.sidebar__overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* drawer */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 80vw;                  /* mobile‑first width */
+  max-width: 320px;             /* never wider than 320 px */
+  background: #e6ddac;
+  box-shadow: 4px 0 16px rgba(0, 0, 0, 0.18);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 1000;                /* above everything */
+  display: flex;
+  padding: 0px 0px 0px 20px;
+  flex-direction: column;
+}
+.sidebar.open { transform: translateX(0); }
+
+/* close (×) */
+.sidebar__close {
+  align-self: flex-end;
+  font-size: 2rem;
+  line-height: 1;
+  border: 2px solid black;
+  background: none;
+  border-radius: 5px;
+  padding: 0px 5px 0px 5px;
+  cursor: pointer;
+ margin-right: 10px;
+  margin-bottom: 1rem;
+  margin-top: 10px;
+}
+.sidebar_hr_line{
+  height: 3px;
+  background-color: black;
+  border-radius: 50%;
+  margin-top: 24px;
+  width: 270px;
+}
+
+.sidebar_container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0;
+}
+/* links */
+.sidebar__links { list-style: none; margin: 0; padding-bottom: 3px; width: 120px; }
+.sidebar__links li + li { margin-top: 1rem; }
+.sidebar__links a {
+  font-family: Manrope;
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(197, 137, 64, 1);
+  text-decoration: none;
+}
+.sidebar__links a:hover { color: #b09563; }
+.sidebar_icon_head{
+  font-family: Merienda;
+  font-size: 30px;
+}
+.sidebar_social_media_icons{
+  display: flex;
+  flex-direction: row;
+  padding-top: 20px;
+  gap: 16px;
+}
+.sidebar_second_head{
+  padding-top: 30px;
+}
+.menu_sidebar_img{
+  margin-left: 50px;
+}
+.sidebar_social_media_icons div img{
+  width: 34px;
+}
+
+.sidebar__links li a:hover{
+/* color: rgba(130, 83, 0, 1); */
+font-weight: 600;
+}
+
+/* tiny‑phone tweak */
+@media (max-width: 480px) { .sidebar { width: 90vw; }
+/* .sidebar__content {
+    flex-direction: column;
+  }
+  .sidebar__banner img {
+    width: 100%;
+    max-height: 160px;  
+  } */
+   .profile-icon{
+    display: none;
+   }
+}
+
+@media (max-width: 768px) {
+  .navbar__logo img {
+    height: 38px;
+  }
+  .navbar{
+    padding-top: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding-top: 15px;
+    /* padding: 0 0.5rem; */
+  }
+  .navbar__icon-btn {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* ------------ defaults = mobile / tablet ------------ */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  height: 64px;
+}
+
+.navbar__icon-btn   { background: none; border: 0; cursor: pointer; }
+.navbar__logo img   { width: 120px; }
+.navbar__links      { display: none; list-style: none; margin: 0; padding: 0; }
+.navbar__links li a { text-decoration: none; color: #333; font-weight: 500; }
+.cart_and_heart img { width: 24px; margin-left: 1rem; cursor: pointer; }
+
+/* ------------ laptop / desktop ≥ 992 px ------------ */
+@media (min-width: 992px) {
+  /* show horizontal menu */
+  .navbar__links {
+    display: flex;
+    gap: 2.5rem;
+    font-family: Poppins;
+  }
+
+  /* hide hamburger */
+  .navbar__icon-btn {
+    display: none;
+  }
+.navbar__logo img{
+width: 160px;
+}
+  /* hide sidebar infrastructure */
+  .sidebar,
+  .sidebar__overlay {
+    display: none !important;   /* override transform/opacity rules */
+  }
+}
+

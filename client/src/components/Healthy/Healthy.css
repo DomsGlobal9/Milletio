@@ -1,0 +1,130 @@
+/* 0. Root palette & general ------------------------------------------------ */
+:root { --gold: #8b6a10; }
+
+.healthy {
+  max-width: 480px;      /* keeps component centred on bigger screens */
+  margin: auto;
+  padding: 3.5rem .75rem;
+  font-family: "Inter", sans-serif;
+  color: var(--gold);
+  text-align: center;
+  overflow: hidden;
+ 
+}
+
+/* 1. Headline -------------------------------------------------------------- */
+.headline { position: relative; margin-bottom: 5rem; }
+
+h2 {
+  font-size: 1.65rem;   /* ≈26px */
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0;
+  font-family: Merienda;
+}
+
+.logo { color: #000; }
+
+.stack {
+  width: 4.5rem;
+  position: absolute;
+  top: -35px;
+  width: 120px;
+}
+.stack--left  { left:-120px ; width: 220px; height: 130px; transform: rotate(0deg); }
+.stack--right { right: -76px;width: 150px; height: 130px; transform: rotate( 15deg); }
+
+/* 2. Product — centre pack ------------------------------------------------- */
+.productBox { position: relative; width: 45%; margin: auto; }
+.pack       { width: 100%; display: block; position: relative;z-index: 2;}
+
+/* 3. Call‑outs (label + arrow image) -------------------------------------- */
+.callout {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+  font-size: .72rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.arrow {
+  width: 2.3rem;
+  flex-shrink: 0;
+  z-index: -1;
+  position: absolute; 
+  z-index: 1;
+  /* position: relative; */
+  /* default arrow points RIGHT. Rotate per call‑out below */
+}
+.callout span{
+  position: relative;
+}
+
+/* —— individual positions & arrow rotations —— */
+.protein { top: -1.7rem; left: 40%; transform: translateX(-80%); }
+.protein .arrow { transform: scaleX(1) rotate(10deg);  }
+.protein span{
+  right: 50px;
+  bottom: 18px;
+  font-size: 14px;
+}
+
+.gluten  { top: 6%;  right: -2.4rem; }
+.gluten  .arrow { transform: scaleX(-1) rotate(6deg);}       /* points LEFT */
+.gluten span{
+  bottom: 10px;
+  left: 45px;
+   font-size: 14px;
+}
+.gut     { top: 36%;  right: -2.3rem; }
+.gut     .arrow { transform: scaleX(-1) rotate(10deg); }
+.gut span{
+  left: 40px;
+  bottom: 14px;
+   font-size: 14px;
+}
+.antiox  { bottom: 20%; right: -4.0rem; }
+.antiox  .arrow { transform: rotate(140deg); }
+.antiox span{
+ left: 36px;
+ bottom: 10px;
+  font-size: 14px;
+}
+.fiber   { bottom: -0.6rem; left:-10%; transform: translateX(-50%); }
+.fiber   .arrow { transform:scaleX(-1) rotate(-166deg); }
+.fiber span{
+  left: -40px;
+  top: 10px;
+   font-size: 14px;
+}
+.preserv { top: 54%;  left: -1.4rem; }
+.preserv .arrow { transform: rotate(-20deg);  }         
+.preserv span{
+  left: -66px;
+  top: -16px;
+   font-size: 14px;
+}
+.sweet   { top: 10%;  left: -1.5rem; }
+.sweet   .arrow { transform: rotate(-75deg); }
+.sweet span{
+  left: -75px;
+  top: 28px;
+   font-size: 14px;
+}
+/* 4. Slightly wider than typical phones ----------------------------------- */
+@media (min-width: 600px) {
+  h2          { font-size: 2rem; }
+  .productBox { width: 60%; }
+}
+@media (min-width: 992px){
+  .headline .stack--left{
+    display: none;
+  }
+  .headline .stack--right{
+    display: none;
+  }
+}
+
+

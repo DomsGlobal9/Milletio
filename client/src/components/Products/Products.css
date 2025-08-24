@@ -1,0 +1,555 @@
+/* ================================================
+   MOBILE FIRST  ( 320 px  →  765 px )
+   ================================================ */
+.products {
+  font-family: Lato;
+  /* padding: 1.5rem 0.75rem 3rem; */
+  max-width: 26rem;             /* keeps nice constraints on small screens */
+  margin: 0 auto;
+  font-family: "Inter", sans-serif;
+  color: #3f2f23;
+}
+
+.products__heading {
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: Lato;
+  margin-bottom: 0.5rem;
+  padding-left: 20px;
+}
+
+/* ---------- Tabs ---------- */
+.tabs {
+  display: flex;
+  padding: 5px;
+  /* overflow-x: auto; */
+  /* border-bottom: 1px solid #d4c5b2; */
+  /* margin-bottom: 1.25rem; */
+  scroll-behavior: smooth;
+}
+
+.tab {
+  flex: 0 0 auto;
+  padding: 0.55rem 0.9rem;
+  font-size: 0.83rem;
+  font-weight: 600;
+  font-family: Lato;
+  color: #7c654c;
+  background: none;
+  border: 0;
+  margin-bottom: 20px;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+}
+
+.tab.is-active {
+  color: #3f2f23;
+  width: 100px;
+  border-bottom-color: rgba(73, 48, 3, 1);     /* millet‑gold accent */
+  /* border: 4px solid rgba(73, 48, 3, 1) */
+}
+
+/* ---------- Card list ---------- */
+.pList {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.pCard_rupee_symbol{
+  font-size: 18px;
+}
+
+/* ---------- Individual Card ---------- */
+.pCard {
+  background: #f7f1e9;
+  border-radius: 0.75rem;
+  /* padding: 0.85rem; */
+  margin: 10px;
+  height: 165px;
+  display: flex;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 6%);
+}
+
+.pCard__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: space-around;
+  flex: 1 1 40%;
+}
+
+.pCard__text h3 {
+  font-size: 0.82rem;
+  font-weight: 700;
+  /* margin-bottom: 0.25rem; */
+  /* line-height: 1.25; */
+  padding: 10px;
+}
+
+
+.pCard__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 6px;
+  justify-content: space-around;
+  padding: 8px;
+  font-size: 20px;
+}
+
+.pCard_sub_text{
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  font-family: Lato;
+  font-weight: 400;
+  /* padding: 3px 10px; */
+}
+.pCard_sub_text div span{
+  text-align: center;
+  font-weight: 600;
+  font-size: 8px;
+}
+.pCard_sub_text hr {
+  width: 1px;               /* thin vertical bar              */
+  height: 20px;             /* ← as requested                 */
+  background: #080707;      /* muted grey (adjust if needed)  */
+  border: none;             /* remove default hr styling      */
+  margin: 0;                /* no extra top/bottom spacing    */
+}
+.pCard__price {
+  font-weight: 700;
+  /* font-size: 12px; */
+}
+
+.pCard__btn {
+  padding: 0.4rem 1.1rem;
+  font-size: 14px;
+  font-weight: 500;
+  width: 100%;
+  border: none;
+  border-radius: 0.35rem;
+ background: rgba(197, 137, 64, 1);
+  color: #fff;
+  cursor: pointer;
+}
+
+.pCard__img {
+  height: 100%;              /* fill the card’s full height            */
+  display: block;            /* kills the default inline‑img baseline  */
+  object-fit: cover;         /* no letter‑boxing; crops if needed      */
+}
+
+
+
+/* ================================================
+   DESKTOP / TABLET‑LANDSCAPE  ( 766 px ↑ )
+   ================================================ */
+@media (min-width: 766px) {
+  .products       { max-width: 60rem; }
+  .products__heading { font-size: 1.35rem; }
+
+  .tab            { font-size: 0.9rem; padding: 0.65rem 1.2rem; }
+
+  .pList          { gap: 1.25rem; }
+
+  .pCard          { padding: 1.1rem; gap: 1rem; }
+  .pCard__img     { width: 6.2rem; }
+
+  .pCard__text h3 { font-size: 0.9rem; }
+  .pCard__text p  { font-size: 0.78rem; }
+  .pCard__btn     { font-size: 0.75rem; padding: 0.45rem 1.35rem; }
+}
+
+
+/* ============================================================
+   HAND‑HELD PHONES  —  up to 480 px
+   ============================================================ */
+@media (max-width: 480px) {
+
+  /* ---- Category tabs ---- */
+  .tabs {
+    gap: 0;                       /* no extra gaps = more room */
+  }
+
+  .tab {
+    flex: 1 1 0;                  /* each button = 25 % of row   */
+    min-width: 0;                 /* ignore its text length      */
+    padding: 0.45rem 0;           /* slimmer left/right padding  */
+    font-size: 0.72rem;           /* slightly smaller text       */
+    white-space: nowrap;          /* keep label on one line      */
+    text-align: center;           /* centre each label           */
+  }
+
+  /* remove the desktop-only fixed width so the highlight behaves */
+  .tab.is-active {
+    width: auto;                  /* override earlier 100 px     */
+    border-bottom-width: 3px;     /* a touch thicker for clarity */
+  }
+}
+
+/* ============================================================
+   TWO‑TONE “NUTRI” CARDS  (left = millet‑yellow, right = accent)
+   ============================================================ */
+
+/* ----- card shell ------------------------------------------------- */
+.pCard {
+  position: relative;                  /* so ::after can live inside  */
+  overflow: hidden;                    /* clip the accent sheet       */
+  background: #fff2cc;                 /* constant pale‑yellow base   */
+}
+
+/* lift the content above the accent sheet */
+.pCard > * { position: relative; z-index: 2; }
+
+/* ----- coloured strip on the right ------------------------------- */
+.pCard::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;                            /* hugs the right edge         */
+  bottom: 0;
+  width: 42%;                          /* ≈ image width + padding     */
+  background: var(--accent);           /* individual colour per card  */
+  border-top-right-radius: inherit;    /* respect the card rounding   */
+  border-bottom-right-radius: inherit;
+  z-index: 1;
+}
+
+/* ============================================================
+   FULL‑CARD PASTEL BACKGROUNDS  (no side strip)
+   ============================================================ */
+
+/* 1.  Make the card’s own background use --accent
+      and hide the ::after veneer we added earlier               */
+.pCard {
+  background: rgba(255, 250, 236, 1);
+
+}
+.pCard::after { content: none; }        /* remove the side sheet    */
+
+/* ----- optional micro‑interaction --------------------------------- */
+.pCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+/* ============================================================
+   (optional) tweak accent width on larger screens
+   ============================================================ */
+@media (min-width: 766px) {
+  .pCard::after { width: 35%; }        /* a little slimmer on desktop */
+}
+
+/* ============================================================
+   ALTERNATE CARD LAYOUT  (image ↔︎ text on every other item)
+   ============================================================ */
+
+/* Even‑numbered cards (2nd, 4th, 6th …) */
+.pList .pCard:nth-child(even) {
+  flex-direction: row-reverse;          /* swap image & content      */
+}
+
+
+
+/* Flip only the top‑level flex direction on even cards */
+.pList .pCard:nth-child(even) {
+  flex-direction: row-reverse;        /* image right, text left */
+}
+
+
+/* ensure card is positioning context */
+.pCard { position: relative; }
+
+/* wishlist heart */
+.pCard__heart {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: white;
+  background: none;
+  cursor: pointer;
+}
+.pCard__heart img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* tablets / larger phones (≥600 px) */
+@media (min-width: 600px) {
+  .pCard__heart { top: 10px; right: 10px; width: 32px; height: 32px; }
+}
+
+/* desktops (≥960 px) */
+@media (min-width: 960px) {
+  .pCard__heart { top: 12px; right: 12px; width: 36px; height: 36px; }
+}
+.products_desktop_heading{
+  display: none;
+}
+
+@media (min-width:900px){
+  .tabs{
+    display: flex;
+    justify-content: center;
+  }
+  .products__heading{
+    text-align: center;
+    display: none;
+  }
+  
+  .products_desktop_heading{
+ display: flex;
+ justify-content: center;
+ font-family: Nunito;
+ padding: 20px 0px 20px 0px;
+  }
+}
+
+
+/* ======================
+   DESKTOP VIEW (≥ 1200px)
+   ====================== */
+@media (min-width: 1200px) {
+  body {
+    background-color: #ffffff;
+  }
+
+  .products {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    position: relative;
+  }
+
+  .products__heading {
+    display: none; /* hide mobile heading */
+  }
+
+  .products_desktop_heading {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #3f2f23;
+    font-family: Lato, sans-serif;
+  }
+
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #e0d6cb;
+    padding-bottom: 10px;
+  }
+
+  .tab {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #7c654c;
+    background: none;
+    border: none;
+    padding: 0.5rem 1.25rem;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+  }
+
+  .tab.is-active {
+    color: #3f2f23;
+    border-bottom-color: #493003;
+  }
+
+  .pList {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+    scroll-behavior: smooth;
+    padding: 0 3rem;
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .pList::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+
+  .pCard {
+    flex: 0 0 calc(25% - 1rem);
+    max-width: calc(25% - 1rem);
+    min-width: 250px;
+    height: auto;
+    background: rgba(255, 250, 236, 1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .pCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
+  }
+
+  /* Wishlist heart for desktop */
+  .pCard__heart {
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .pCard__img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .pCard__text h3 {
+    font-size: 1rem;
+  }
+
+  .pCard__btn {
+    font-size: 0.85rem;
+  }
+}
+
+
+
+@media (min-width: 1200px) {
+   .pList .pCard:nth-child(even),
+  .pList .pCard:nth-child(odd) {
+    flex-direction: column-reverse;
+  }
+  .product-carousel-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    /* max-width: 1280px; */
+    margin: 0 auto;
+  }
+
+  .arrow {
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    padding: 0.5rem;
+    transition: transform 0.2s ease;
+  }
+
+  .arrow:hover {
+    transform: scale(1.1);
+  }
+
+  .arrow.left {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .arrow.right {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .pList {
+    display: flex;
+    overflow-x: auto;
+    /* gap: 1.25rem; */
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    /* padding: 1rem 2.5rem; */
+  }
+
+  .pList::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pCard {
+    background: #fffaf0;
+    border-radius: 12px;
+    /* width: 260px; */
+    /* min-width: 260px; */
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    transition: 0.2s;
+    position: relative;
+  }
+
+  .pCard:hover {
+    transform: translateY(-4px);
+  }
+
+  .pCard__imgWrap {
+    width: 100%;
+    height: 180px;
+    /* padding: 1rem; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .pCard__img {
+    /* max-height: 100%;
+    max-width: 100%; */
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .pCard__text {
+    /* padding: 1rem; */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .pCard__text h3 {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .pCard__footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .pCard__btn {
+    background: rgba(197, 137, 64, 1);
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  .pCard_sub_text {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+  }
+
+  .pCard__heart {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background: none;
+    border: none;
+  }
+
+}
+
+
+

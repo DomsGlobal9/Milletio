@@ -1,0 +1,315 @@
+/* =========================================================
+   MOBILE DEFAULTS  ( 320 px  →  765 px )
+   ========================================================= */
+
+.brands {
+  padding: 2.5rem 1rem;
+  text-align: center;
+  backdrop-filter: blur(120px);
+  box-shadow: #b09563; 
+  overflow: hidden; 
+}
+
+.brands__heading h1 {
+  font-size: 1.85rem;
+  font-weight: 750;
+  margin-bottom: 0.25rem;
+  font-family: Merienda;
+}
+/* .brands__heading{
+  backdrop-filter: blur(200px);
+  box-shadow:#B09563;
+} */
+/* .brands__heading {
+  position: relative;
+  display: inline-block;  
+} */
+
+.brands__heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  gap: 0.5em;
+}
+
+
+
+
+
+.brand_title {
+  color: rgba(82, 57, 13, 1);
+
+  /* mega‑intense gold aura */
+  text-shadow:
+    0 0 28px  rgba(176, 149, 99, 1),    
+    0 0 60px  rgba(176, 149, 99, 0.95),  
+    0 0 120px rgba(176, 149, 99, 0.85),    
+    0 0 180px rgba(176, 149, 99, 0.70),   
+    0 0 240px rgba(176, 149, 99, 0.55),    
+    0 0 300px rgba(176, 149, 99, 0.40);     
+}
+
+.sub_brand_title {
+  color: rgba(130, 83, 0, 1);
+
+
+  /* strong, but a step down from the H1 */
+  text-shadow:
+    0 0 20px  rgba(176, 149, 99, 0.97),
+    0 0 50px  rgba(176, 149, 99, 0.88),
+    0 0 100px rgba(176, 149, 99, 0.75),
+    0 0 160px rgba(176, 149, 99, 0.60),
+    0 0 220px rgba(176, 149, 99, 0.45);
+}
+
+.brands__heading .sub_brand_title {
+  font-size: 1.85rem;
+  font-weight: 700;
+  font-family: Manrope;
+  margin-bottom: 1.75rem;
+}
+
+/* -------- marquee strip -------- */
+.marquee {
+  width: 100%;
+  position: relative;
+}
+
+.marquee__track {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content; /* shrink‑wrap children */
+  animation: marquee 12s linear infinite;
+}
+
+
+.marquee__track img {
+  width: 8rem; /* adjust to taste */
+  height: auto;
+  flex-shrink: 0;
+}
+/* .brand_title {
+  box-shadow: 0px 4px 10px 0px rgba(82, 82, 82, 0.1);
+} */
+/* animation – translate full width of first 3‑image set */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% / 2));
+  }
+  /* -100% / 2  == one half of the duplicated list (3 images) */
+}
+
+/* =========================================================
+   LARGER VIEWPORTS  ( 766 px ↑ )
+   ========================================================= */
+@media (min-width: 766px) {
+  .brands__heading h1 {
+    font-size: 2.4rem;
+    /* display: inline; */
+    /* flex-direction: row; */
+  }
+  .brands__heading p {
+    font-size: 1rem;
+  }
+.brand__heading{
+  display: inline;
+}
+  .marquee__track img {
+    width: 8rem;
+  }
+  .marquee__track {
+    gap: 2.5rem;
+  }
+  .brands {
+    padding: 4rem 2rem;
+  }
+
+  /* Make the scroll a tad slower on desktop */
+  .marquee__track {
+    animation-duration: 16s;
+  }
+}
+
+/* @media (min-width: 900px) {
+  .brands__heading {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2em;
+  }
+
+   .brands__heading{
+    padding-bottom: 30px;
+   }
+  .brand_title{
+    font-family: Manrope;
+    text-shadow: none;
+  }
+  .brands__heading h1 {
+    font-family: Manrope;
+    font-size: 50px;
+    color: rgba(130, 83, 0, 1);
+     letter-spacing: 4px;
+  }
+ 
+  .brands{
+      backdrop-filter: none;
+  box-shadow: none; 
+  }
+.brands__heading .sub_brand_title{
+    font-family: Manrope;
+    font-size: 50px;
+    padding-top: 20px;
+    text-shadow: none;
+     letter-spacing: 4px;
+    color: rgba(130, 83, 0, 1);
+  }
+  .marquee .marquee__track img{
+        background-color: white;
+        padding: 10px;
+        width: 150px;
+        border-radius: 6px;
+  }
+  
+  
+} */
+
+@media (max-width:600px){
+  .comma_space{
+  display: none;
+}
+
+}
+/* @media (min-width:900px){
+  .brands{
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+         backdrop-filter: none;
+  box-shadow: none;
+  position: relative;
+  
+  }
+  .brands__heading .sub_brand_title{
+    font-family: Manrope;
+    text-shadow: none;
+    color: rgba(130, 83, 0, 1);
+  }
+  .brand_title{
+    text-shadow: none;
+  }
+  .brand__heading{
+    width: 300px;
+    height: 200px;
+    position: absolute;
+    font-family: Manrope;
+    z-index: 4;
+    background-color: white;
+  }
+  .brand__heading div h1{
+    font-family: Manrope;
+  }
+  .marquee{
+    width: 800px;
+  }
+  .marquee{
+    position: absolute;
+    z-index: 2;
+    background-color: red;
+  }
+} */
+
+@media (min-width: 1200px) {
+  .brands {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    padding: 20px 40px;
+    background: #fff;
+        background-color: white;
+         backdrop-filter: none;
+  box-shadow: none;
+  }
+
+  .brands__heading {
+    flex: 0 0 auto;
+    z-index: 2;
+    position: relative;
+    text-shadow: none;
+  }
+
+  .brand_title {
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: Manrope;
+    color: #3f2f23;
+    margin: 0;
+    box-shadow: none;
+    text-shadow: none;
+  }
+  .brand__heading h1{
+    font-family: Manrope;
+  }
+
+  .brands{
+    /* border: 1px solid black; */
+    height: 140px;
+    box-shadow: 0px 4px 44px 0px rgba(0, 0, 0, 0.07);
+
+  }
+
+  .sub_brand_title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #7c654c;
+    text-shadow: none;
+    box-shadow: none;
+    margin: 0;
+  }
+
+  .brand_title{
+    font-family: Poppins;
+  }
+  .comma_space {
+    display: inline-block;
+    width: 6px;
+  }
+ .brands__heading h1{
+  font-family: Manrope;
+ }
+  .marquee {
+    flex: 1 1 auto;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    margin-left: 2rem;
+  }
+
+  .marquee__track {
+    display: flex;
+    gap: 2rem;
+    animation: scrollMarquee 25s linear infinite;
+    align-items: center;
+  }
+
+  .marquee__track img {
+    height: 40px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  @keyframes scrollMarquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+}

@@ -1,0 +1,87 @@
+/* Overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Modal */
+.modal-content {
+ background: rgba(53, 36, 7, 1);
+  background-size: 80px 80px;
+  border-radius: 16px;
+  box-shadow: 0 4px 32px rgba(44, 34, 15, 0.15);
+  padding: 2.5rem 1.5rem 2rem 1.5rem;
+  border: 2px solid white;
+  min-width: 260px;
+  max-width: 90vw;
+  width: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: modal-slide-down 0.45s cubic-bezier(.22,1,.36,1);
+  position: relative;
+}
+
+/* Animate from top */
+@keyframes modal-slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-80px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal-message h2 {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-family: Poppins;
+  text-align: center;
+  margin: 0 0 2rem 0;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 4px #0003;
+}
+
+.modal-login-btn {
+  width: 280px;
+  background: rgba(197, 137, 64, 1);
+  color: #fff;
+  font-family: Lato;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7em 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s;
+  box-shadow: 0 2px 8px #0001;
+  border: 1.5px solid #fff7e6;
+}
+.modal-login-btn:hover,
+.modal-login-btn:focus {
+  background: #a67c28;
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    width: 94vw;
+    min-width: unset;
+    padding: 2rem 0.8rem 1.5rem 0.8rem;
+  }
+  .modal-message h2 {
+    font-size: 1.1rem;
+  }
+  .modal-login-btn {
+    font-size: 1rem;
+    padding: 0.6em 0;
+  }
+}

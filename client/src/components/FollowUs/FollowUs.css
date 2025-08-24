@@ -1,0 +1,152 @@
+:root {
+  --gold: #8b6a10;
+}
+
+/* ───────────────────────────────────────────────────────────────────────────*/
+/*  0.  BASE STYLES  →  COVERS 320 px–359 px (smallest phones, e.g. iPhone SE)
+/* ----------------------------------------------------------------------------*/
+
+.followUs {
+  text-align: center;
+  background: #f7f0ce;
+  margin-bottom: 20px;
+  /* width: 100%; */
+}
+
+.followUs__title {
+  font-family: Merienda;
+  font-size: 23px;              /* ≈ 22 px */
+  color: var(--gold);
+  margin: 0 0 .15rem;
+}
+
+.followUs__handle {
+  font-weight: 700;                 /* ≈ 16 px */
+  color: #3b2c05;
+  font-size: 24px;
+  margin-bottom: 1.1rem;
+  font-family: Manrope;
+}
+
+.followUs__banner {
+  display: block;
+  width: 100%;
+  max-width: 420px;                /* stops it growing too wide on tablets */
+  margin: 0 auto;
+  overflow: hidden;
+  /* border-radius: .35rem; */
+}
+
+.followUs__banner img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s ease;
+}
+
+/* Hover zoom only on devices that actually hover */
+/* @media (hover: hover) {
+  .followUs__banner:hover img { transform: scale(1.05); }
+} */
+
+/* ───────────────────────────────────────────────────────────────────────────*/
+/*  1.  ≥ 360 px  (vast majority of Android phones)                           */
+/* ----------------------------------------------------------------------------*/
+@media (min-width: 360px) {
+  .followUs          { padding: 2.2rem 1rem; }
+  .followUs__title   { font-size: 1.5rem;  }   /* ≈ 24 px */
+  .followUs__handle  { font-size: 1.3rem; }   /* ≈ 17 px */
+}
+
+/* ───────────────────────────────────────────────────────────────────────────*/
+/*  2.  ≥ 375 px  (iPhone 11/12/13/14/15, many Pixels)                        */
+/* ----------------------------------------------------------------------------*/
+@media (min-width: 375px) {
+  .followUs__title   { font-size: 1.65rem; }   /* ≈ 26 px */
+  .followUs__handle  { font-size: 1rem; }   /* ≈ 18 px */
+}
+
+/* ───────────────────────────────────────────────────────────────────────────*/
+/*  3.  ≥ 414 px  (iPhone Plus/Max, some larger Androids)                     */
+/* ----------------------------------------------------------------------------*/
+@media (min-width: 414px) {
+  .followUs__title   { font-size: 1.8rem;  }   /* ≈ 29 px */
+  .followUs__handle  { font-size: 1.15rem; }   /* ≈ 20 px */
+  .followUs__banner  { max-width: 480px; }
+}
+
+/* ───────────────────────────────────────────────────────────────────────────*/
+/*  4.  ≥ 600 px  (7–8″ tablets / landscape phones)                           */
+/* ----------------------------------------------------------------------------*/
+@media (min-width: 600px) {
+  .followUs          { padding: 2.8rem 1.5rem; }
+  .followUs__title   { font-size: 2.1rem;  }   /* ≈ 33 px */
+  .followUs__handle  { font-size: 1.30rem; }   /* ≈ 22 px */
+  .followUs__banner  { max-width: 540px; }
+}
+
+/* ───────────────────────────────────────────────────────────────────────────*/
+/*  5.  ≥ 768 px  (full‑size tablets / small laptops)                         */
+/* ----------------------------------------------------------------------------*/
+@media (min-width: 768px) {
+  .followUs          { padding: 3.5rem 2rem; }
+  .followUs__title   { font-size: 2.4rem;  }   /* ≈ 38 px */
+  .followUs__handle  { font-size: 1.55rem; }   /* ≈ 25 px */
+  .followUs__banner  { max-width: 640px; }
+}
+
+/* ───────────────────────────────────────────────────────────────────────────*/
+/*  6.  ≥ 1024 px  (desktops)                                                 */
+/* ----------------------------------------------------------------------------*/
+@media (min-width: 1024px) {
+  .followUs__banner { max-width: 720px; }
+}
+
+
+/* By default, show mobile text and hide desktop text */
+.followUs__mobileText {
+  display: block;
+}
+.followUs__desktopText {
+  display: none;
+  padding-bottom: 30px;
+}
+.followUs__desktopText h3{
+  font-family: Nunito;
+}
+
+/* Show desktop text and frame, hide mobile text on laptop/desktop */
+@media (min-width: 720px) {
+  .followUs__mobileText {
+    display: none;
+  }
+  .followUs__desktopText {
+    display: block;
+  }
+  .followUs__desktopFrame {
+    display: block;
+    margin-top: 1rem;
+  }
+}
+
+/* Hide desktop frame by default */
+.followUs__desktopFrame {
+  display: none;
+  width: 100%;
+}
+.followUs__desktopFrame img{
+  width: 100%;
+}
+
+@media (min-width: 720px) {
+  .followUs__desktopFrame {
+    display: block;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+  .followUs__banner{
+    display: none;
+  }
+}

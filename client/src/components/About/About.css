@@ -1,0 +1,86 @@
+/* 0. palette & base --------------------------------------------------- */
+:root {
+  --cream: #fff7e6;
+  --field: #f5eddc;
+  --text:  #2b2b2b;
+  --muted: #777;
+  --radius: 0.8rem;
+  font-family: "Inter", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+.about {
+  background: var(--cream);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 1.25rem;
+  line-height: 1.55;
+}
+
+/* 1. header bar ------------------------------------------------------- */
+.about__header {
+  background: var(--field);
+  font-weight: 600;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+/* 2. paragraphs ------------------------------------------------------- */
+.about p { margin: 0 0 1rem; font-size: 0.92rem; text-align: justify; }
+
+/* 3. founder section -------------------------------------------------- */
+.about__founder {
+  margin: 1.25rem 0;
+  text-align: center;
+}
+.about__founder img {
+  width: 100%;
+  height: auto;
+  /* max-width: 260px; */
+  border-radius: var(--radius);
+  display: block;
+  margin: 0 auto 0.7rem;
+}
+.about__founder figcaption {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+/* 4. decorative divider ---------------------------------------------- */
+.about__divider {
+  /* margin: 2rem 0 0.5rem; */
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.about__divider img { width: 100%; height: auto; }
+
+/* 5. MEDIA QUERIES ---------------------------------------------------- */
+
+/* ≥ 600 px — large phones / tablets */
+@media (min-width: 600px) {
+  .about {
+    max-width: 500px;
+    margin: auto;
+    padding: 2rem 1.75rem;
+  }
+  .about p         { font-size: 1rem; }
+  .about__header   { font-size: 1.1rem; }
+}
+
+/* ≥ 960 px — desktops / big tablets */
+@media (min-width: 960px) {
+  .about {
+    max-width: 720px;
+    border: 1px solid #e0d6c4;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 18px rgba(0,0,0,.06);
+  }
+  .about__header { font-size: 1.2rem; }
+}

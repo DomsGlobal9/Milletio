@@ -1,0 +1,115 @@
+/* 0. palette & base --------------------------------------------------- */
+:root {
+  --cream:  #fff7e6;
+  --field:  #f5eddc;
+  --gold:   #8b6a10;
+  --muted:  #6c6c6c;
+  --radius: 0.8rem;
+  font-family: "Inter", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+.fav {
+  min-height: 100vh;
+  background: var(--cream);
+  padding: 1rem;
+}
+
+/* 1. page header ------------------------------------------------------ */
+.fav__header {
+  font-weight: 600;
+  color: var(--gold);
+  font-family: Merienda;
+  font-size: 1.3rem;
+  border-bottom: 1px solid #d9d0bd;
+  padding-bottom: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+/* 2. responsive grid -------------------------------------------------- */
+.favGrid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+/* 3. card ------------------------------------------------------------- */
+.favCard {
+  background: var(--field);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* image */
+.favCard__imgWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+.favCard__imgWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* rating badge */
+.favCard__badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 6px 3px 6px;
+  color: #1b1a1a;
+  display: flex;
+  background: rgba(255, 237, 205, 1);
+  align-items: center;
+  border-radius: 50px;
+  gap: 2px;
+}
+.favCard__badge img { width: 14px; padding-right: 3px;}
+
+/* info */
+.favCard__info {
+  padding: 0.6rem 0.75rem;
+  flex: 1;
+  font-family: Poppins;
+}
+.favCard__title {
+  font-size: 0.8rem;
+  margin: 0 0 0.4rem;
+  line-height: 1.2;
+  font-size: 16px;
+}
+.favCard__price {
+  font-weight: 700;
+}
+
+/* view button */
+.favCard__btn {
+  margin: 0.4rem 0.75rem 0.8rem;
+  padding: 0.4rem 0;
+  width: calc(100% - 1.5rem);
+background: rgba(197, 137, 64, 1);
+  color: #fff;
+  border: none;
+  border-radius: 0.4rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+/* 4. MEDIA QUERIES ---------------------------------------------------- */
+/* tablets */
+@media (min-width: 600px) {
+  .fav { max-width: 560px; margin: auto; padding: 2rem 1.5rem; }
+  .favGrid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+}
+
+/* desktops */
+@media (min-width: 960px) {
+  .fav { max-width: 760px; }
+  .favGrid { gap: 1.25rem; }
+}

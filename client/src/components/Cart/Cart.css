@@ -1,0 +1,134 @@
+/* 0. palette & base --------------------------------------------------- */
+:root {
+  --cream:  #fff7e6;
+  --field:  #fbf3dd;
+  --gold:   #8b6a10;
+  --muted:  #666;
+  --radius: 0.8rem;
+  font-family: "Inter", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+.cart {
+  min-height: 100vh;
+  background: var(--cream);
+  padding: 1rem;
+}
+
+/* 1. header ----------------------------------------------------------- */
+.cart__header {
+  font-weight: 600;
+  font-family: Merienda;
+  color: var(--gold);
+  border-bottom: 1px solid #d9d0bd;
+  padding-bottom: 0.8rem;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+/* 2. total bar -------------------------------------------------------- */
+.cart__total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  font-family: Poppins;
+}
+.cart__totalAmt { font-weight: 700; font-family: Lato;}
+
+/* 3. cart item card --------------------------------------------------- */
+.cartItem {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: rgba(243, 225, 193, 1);
+  border-radius: var(--radius);
+  padding: 0.75rem;
+  margin-bottom: 0.9rem;
+}
+
+.cartItem__img {
+  width: 65px;
+  height: 65px;
+  border-radius: 0.5rem;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.cartItem__info h4 {
+  font-size: 0.85rem;
+  margin: 0 0 0.25rem;
+  line-height: 1.15;
+  font-family: Poppins;
+}
+.cartItem__rating {
+  font-size: 0.78rem;
+  color: var(--gold);
+  display: block;
+}
+.cartItem__price {
+  font-weight: 700;
+  margin-top: 0.3rem;
+  display: block;
+  font-family: Lato;
+  font-size: 1rem;
+}
+
+/* quantity controls */
+.cartItem__qty {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: Lato;
+}
+.cartItem__qty button {
+  width: 25px;
+  height: 25px;
+  background: rgba(255, 219, 156, 1);
+  /* border: 1px solid var(--gold); */
+  border: none;
+  border-radius: 4px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.cartItem__qty span {
+  min-width: 18px;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* 4. checkout button -------------------------------------------------- */
+.cart__checkout {
+  width: 100%;
+  margin-top: 1.2rem;
+  padding: 0.65rem 1rem;
+  background: rgba(197, 137, 64, 1);
+  color: #fff;
+  font-family: Poppins;
+  border: none;
+  font-weight: 500;
+  border-radius: 2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* 5. MEDIA QUERIES ---------------------------------------------------- */
+@media (min-width: 600px) {        /* tablets */
+  .cart {
+    max-width: 520px;
+    margin: auto;
+    padding: 2rem 1.5rem;
+  }
+  .cartItem__img { width: 75px; height: 75px; }
+}
+
+@media (min-width: 960px) {        /* desktops */
+  .cart {
+    max-width: 720px;
+  }
+  .cartItem__img { width: 85px; height: 85px; }
+}

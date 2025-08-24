@@ -1,0 +1,133 @@
+/* ================================================
+   MOBILE DEFAULTS  ( 320 px  →  765 px )
+   ================================================ */
+.why {
+  padding: 2rem 1rem 3rem;
+  max-width: 42rem;
+  margin: 0 auto;
+  font-family: "Inter", sans-serif;
+  color: #5c4a2f;
+}
+
+.why__heading {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  padding-left: 10px;
+  font-family: Lato;
+}
+
+.why__grid {
+  display: grid;
+  justify-content: space-between;
+  align-items: center;
+  grid-template-columns: repeat(2, 1fr); /* 2‑col mobile layout */
+  gap: 1.25rem;
+  /* padding: 20px 1px; */
+}
+
+.card {
+background: rgba(213, 198, 170, 1);
+
+  border-radius: 0.75rem;
+  /* padding: 10px !important; */
+  height: 120px;
+  width: 145px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+align-items: center;
+  text-align: center;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 6%);
+}
+
+.card__icon {
+  display: inline-block;
+  margin: 4px 5px;
+  padding: 5px;
+  height: 60px;
+  width: 60px;
+  color: #b28a4b;           /* millet‑gold accent */
+}
+
+.card__title {
+   font-size: 0.55rem;   /* ≈ 9 px — adjust to taste */
+  font-weight: 700;
+  padding: 0;
+}
+
+.card__desc {
+  font-size: 0.75rem;
+  line-height: 1.35;
+}
+
+/* ================================================
+   DESKTOP / TABLET‑LANDSCAPE  ( 766 px ↑ )
+   ================================================ */
+@media (min-width: 766px) {
+  .why__heading   { font-size: 2rem; }
+
+  .why__grid {
+    grid-template-columns: repeat(3, 1fr); /* 3‑col layout */
+    gap: 1.75rem;
+    justify-content: space-evenly;
+  }
+
+  .card { padding: 1.80rem; }
+  .card__icon  { font-size: 2.6rem; }
+  .card__title {   font-size: 0.9rem;  /* ≈ 14 px */ }
+  .card__desc  { font-size: 0.85rem; }
+}
+
+/* ───────── extra mobile‑specific font‑sizes ───────── */
+
+/* ① very small phones  320‑359 px */
+@media (max-width: 359px) {
+  .card__title { font-size: 0.55rem; }   /* ≈ 9 px */
+}
+
+/* ② small phones  360‑374 px */
+@media (min-width: 360px) and (max-width: 374px) {
+  .card__title { font-size: 0.65rem; }   /* ≈ 10‑11 px */
+}
+
+/* ③ standard phones  375‑413 px */
+@media (min-width: 375px) and (max-width: 413px) {
+  .card__title { font-size: 0.75rem; }   /* ≈ 12 px */
+}
+
+/* ④ large phones / phablets  414‑765 px  (still “mobile” range) */
+@media (min-width: 414px) and (max-width: 765px) {
+  .card__title { font-size: 0.85rem; }   /* ≈ 14 px */
+}
+
+/* your existing ≥766 px desktop / tablet rule stays as‑is */
+
+
+
+
+@media (min-width:900px){
+  .why__heading{
+    display: none;
+  }
+  .why {
+    width: 100vw;
+    max-width: none;
+    margin: 0;
+    padding: 0.5rem 0 2.4rem 0;
+    float: none;
+  }
+  .why__grid{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 50px;
+    padding-left: 5px;
+    padding-right: 0;
+  }
+  .card{
+    width: 200px;
+    height: 140px;
+  }
+}

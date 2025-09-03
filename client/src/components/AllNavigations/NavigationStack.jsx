@@ -11,7 +11,7 @@ import FollowUs from '../FollowUs/FollowUs'
 import "../../App.css"
 // import Recipes from '../recipes/recipes'
 import RecipeCard from '../Cards/RecipeCard'
-import RecipeCarousel from '../recipes/recipes'
+import RecipeCarousel from '../Recipes/Recipes'
 
 const NavigationStack = () => {
   return (

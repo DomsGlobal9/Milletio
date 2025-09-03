@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./navbar.css";
+import "./Navbar.css";
 import hamburgerIcon from "../../assets/hamburg_icon.svg";
 import milletioLogo  from "../../assets/milletio_logo.png";
 import cartIcon      from "../../assets/cart_img.svg";

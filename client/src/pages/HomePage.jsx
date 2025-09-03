@@ -9,6 +9,7 @@ import Recipes from '../components/Recipes/Recipes'
 import { BestSeller } from '../components/BestSeller/BestSeller'
 import ResponsiveHealthy from '../components/HealthyResponsive/HealthyResponsive'
 
+
 const HomePage = () => {
   return (
     <>

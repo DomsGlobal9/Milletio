@@ -5,7 +5,7 @@ import Benefits from "../components/Benefits/Benefits"
 import Reviews from '../components/Reviews/Reviews'
 import Products from '../components/Products/Products'
 import FollowUs from '../components/FollowUs/FollowUs'
-import Recipes from '../components/recipes/recipes'
+import Recipes from '../components/Recipes/Recipes'
 import { BestSeller } from '../components/BestSeller/BestSeller'
 import ResponsiveHealthy from '../components/HealthyResponsive/HealthyResponsive'
 

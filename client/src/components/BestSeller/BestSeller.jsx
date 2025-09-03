@@ -42,7 +42,7 @@ import React from "react";
 import { useMediaQuery } from "react-responsive";
 import { Star } from "lucide-react";
 import { bestSellers } from "../../assets/bestSellerMock";
-import "./Bestseller.css";
+import "./BestSeller.css";
 
 export function BestSeller() {
   const isDesktop = useMediaQuery({ minWidth: 1024 });

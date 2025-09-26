@@ -4,12 +4,15 @@ import img1 from "../../assets/amazon.svg";
 import img2 from "../../assets/swiggy.svg";
 import img3 from "../../assets/blinkit.svg";
 import img4 from "../../assets/flipcart.svg";
-
+import milletioLogo  from "../../assets/milletio_logo.png";
 
 const Brands = () => (
   <section className="brands">
     <div className="brands__heading">
-      <div><h1 className="brand_title">Milletio </h1></div>
+      <div>
+        {/* <h1 className="brand_title">Milletio </h1> */}
+      <img src={milletioLogo} style={{objectFit:'contain',width:'150px'}} alt="" />
+      </div>
       <div><h3 className="sub_brand_title">Now at Your Doorstep</h3></div>
     </div>
     {/* ——— marquee strip ——— */}

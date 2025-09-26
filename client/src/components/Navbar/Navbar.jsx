@@ -29,6 +29,8 @@ export default function Navbar() {
     { label: "Products", href: "/shop" },
     { label: "Our Community", href: "/community" },
     { label: "Our Story", href: "/story" },
+    {label: "Blogs", href: "/story"}
+    
   ];
   return (
     <>

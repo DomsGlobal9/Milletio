@@ -7,7 +7,7 @@
 }
 body{
   background: rgba(255, 242, 204, 1);
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 @media (min-width: 1024px) {
   body {

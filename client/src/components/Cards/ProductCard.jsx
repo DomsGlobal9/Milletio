@@ -1,50 +1,4 @@
 
-
-// const ProductCard = ({ id, title, img, price, onAddToCart }) => {
-//   const [liked, setLiked] = useState(false);
-//   const navigate = useNavigate();
-//   const handleCardClick = () => navigate(`/products/${id}`);
-
-//   const handleWishClick  = (e) => {
-//     e.stopPropagation();           // ← don’t follow the link
-//     setLiked((v) => !v);
-//     onToggleWish?.(id);            // (optional) bubble up
-//   };
-//   return (
-//     <article className="pCard" onClick={handleCardClick}>
-      
-//       <div className="pCard__text">
-//         <h3>{title}</h3>
-
-//         <div className="pCard_sub_text">
-//           <div><span>No Refined <br /> Sugar</span></div><hr />
-//           <div><span>Rich In Protein</span></div><hr />
-//           <div><span>Rich In Fiber</span></div>
-//         </div>
-
-//         <div className="pCard__footer">
-//           <span className="pCard__price">
-//             <span className="pCard_rupee_symbol">₹</span> {price}
-//           </span>
-
-//           {/* keep “Add to cart” from triggering the navigation */}
-//           <button
-//             className="pCard__btn"
-//             onClick={(e) => {
-//               e.stopPropagation();
-//               onAddToCart?.(id);
-//             }}
-//           >
-//             Add to cart
-//           </button>
-//         </div>
-//       </div>
-
-//       <img className="pCard__img" src={img} alt={title} loading="lazy" />
-//     </article>
-//   );
-// };
-
 // export default ProductCard;
 // …imports stay the same …
 import React, { useContext } from "react";
@@ -86,7 +40,19 @@ const ProductCard = ({ id, title, img, price, onAddToCart }) => {
           </span>
 
           {/* keep “Add to cart” from triggering the navigation */}
+       <div style={{display:"flex",justifyContent:'space-between',gap:'2.5px' }}>
+
           <button
+            className="pCard__btn"
+            onClick={(e) => {
+              e.stopPropagation();
+              onAddToCart?.(id);
+              CheckLogin()
+            }}
+          >
+            Buy Now
+          </button>
+            <button
             className="pCard__btn"
             onClick={(e) => {
               e.stopPropagation();
@@ -96,6 +62,7 @@ const ProductCard = ({ id, title, img, price, onAddToCart }) => {
           >
             Add to cart
           </button>
+       </div>
         </div>
       </div>
       {/* ⬇︎  just this wrapper + button added */}

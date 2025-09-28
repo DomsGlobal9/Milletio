@@ -15,7 +15,7 @@ import Reviews from "../Reviews/Reviews";
 const MOCK = [
   {
     id: "1",
-    title: "Choco Berry Crunch Nutri Bar (50 g)",
+    title: "Choco Berry Crunch Nutri Bar (50 g)",
     desc: "A fruity and refreshing nutri bar loaded with the goodness of mixed berries.",
     price: 65,
     oldPrice: 149,
@@ -40,7 +40,7 @@ const MOCK = [
       { nutrient: "Saturated Fat", amount: "2.4 g" }
     ],
 
-        reviews: [
+    reviews: [
       {
         reviewer: "Amit Sharma",
         rating: 5,
@@ -72,12 +72,7 @@ const MOCK = [
         points: ["Bad texture"]
       }
     ]
-  
   }
-
-
-  
-  // ...other items
 ];
 
 function getRatingData(reviews) {
@@ -90,11 +85,8 @@ function getRatingData(reviews) {
   return { ratingCounts, total, avg };
 }
 
-
-
-const  ProductDetails=()=> {
-
-   const [reviewData, setReviewData] = useState({
+const ProductDetails = () => {
+  const [reviewData, setReviewData] = useState({
     rating: 0,
     numReviews: 0,
     reviews: [],
@@ -119,163 +111,172 @@ const  ProductDetails=()=> {
 
   const [data, setData] = useState([]);
   
-    /* simulate fetch */
-    useEffect(() => {
-      // Replace with axios.get("/api/products") in future
-    //   setData(mock);
-    }, []);
+  /* simulate fetch */
+  useEffect(() => {
+    // Replace with axios.get("/api/products") in future
+    // setData(mock);
+  }, []);
   
-    const filtered = data.filter(p => p.category === activeCat);
- const reviews = MOCK[0].reviews;
+  // const filtered = data.filter(p => p.category === activeCat);
+  const reviews = MOCK[0].reviews;
   const { ratingCounts, total, avg } = getRatingData(reviews);
   const [mainImg, setMainImg] = useState(product.images[0]);
   const [qty, setQty] = useState(1);
 
   return (
     <section className="productDetails">
-      {/* ---------- gallery ---------- */}
-      <div className="productDetails__gallery">
-        <img
-          src={mainImg}
-          alt={product.title}
-          className="productDetails__mainImg"
-        />
+      {/* Main content wrapper for gallery and info */}
+      <div className="productDetails__main-content">
+        {/* ---------- gallery ---------- */}
+        <div className="productDetails__gallery">
+          <img
+            src={mainImg}
+            alt={product.title}
+            className="productDetails__mainImg"
+          />
 
-        <div className="productDetails__thumbnails">
-          {product.images.map((src) => (
-            <img
-              key={src}
-              src={src}
-              alt=""
-              className={`productDetails__thumb${
-                mainImg === src ? "productDetails__thumb--active" : ""
-              }`}
-              width={100}
-              height={100}
-              onClick={() => setMainImg(src)}
-            />
-          ))}
-        </div>
-      </div>
-
-      {/* ---------- info ---------- */}
-      <div className="productDetails__info">
-        <h2 className="productDetails__title">{product.title}</h2>
-        <p className="productDetails__desc">
-          {product.desc}{" "}
-          <span className="productDetails__readMore">Read more.</span>
-        </p>
-        <div className="ProductDetails_sub_info">
-        <div className="productDetails__priceWrap">
-             <h5 className="productDetails__oldPrice">M.R.P ₹{product.oldPrice}</h5>
-          <span className="productDetails__discount">
-            {product.discountLabel}
-          </span>
-          <span className="productDetails__price"><span className="productDetails_price_symbol">₹</span>{product.price}</span>
-        </div>
-
-        <div className="productDetails__qty">
-          <button onClick={() => setQty(Math.max(1, qty - 1))}>−</button>
-          <span>{qty}</span>
-          <button onClick={() => setQty(qty + 1)}>＋</button>
-        </div>
-        </div>
-        <div>
-            <p className="productDetails_tax_desc">Tax include.shipping calcilated at checkout. </p>
-        </div>
-        <button className="btn addToCart">Add to Cart</button>
-        <button className="btn buyNow">Buy Now</button>
-      </div>
-      {/* product Details */}
-      <div className="productDetails_desc_under_buynow">
-          <div>
-             <h4 className="productDetails_desc_under_buynow_heading">Product details:</h4>
-             <p> {product.desc}</p>
-          </div>
-         <div>
-             <h4 className="productDetails_desc_under_buynow_heading">Highlights:</h4>
-               <ul className="productDetails__highlights">
-                {product.highlights.map((point, i) => (
-                    <li key={i}>{point}</li>
-                ))}
-                </ul>
-          </div>
-          <div>
-            <table className="productDetails__table">
-                <thead>
-                    <tr>
-                    <th>Nutrient</th>
-                    <th>Amount (per 50g)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {product.nutrition.map((item, i) => (
-                    <tr key={i}>
-                        <td>{item.nutrient}</td>
-                        <td>{item.amount}</td>
-                    </tr>
-                    ))}
-                     <tr className="table-bottom-text">
-                    <td colSpan={2} style={{ textAlign: "center" }}>
-                      *Daily Values are based on FASSAI RDA.
-                    </td>
-                  </tr>
-                </tbody>
-                </table>
-          </div>
-      </div>
-{/* //reviewsSection */}
-     <div className="review-summary-container">
-      <h3 className="review-summary-title">Reviews:</h3>
-      <div className="review-summary-main">
-        <div className="review-summary-bars">
-          {[5, 4, 3, 2, 1].map((star, idx) => (
-            <div className="review-summary-bar-row" key={star}>
-              <span className="review-summary-star">{star} <span className="star-icon">⭐</span></span>
-              <div className="review-summary-bar-bg">
-                <div
-                  className="review-summary-bar-fill"
-                  style={{
-                    width: total ? `${(ratingCounts[5 - star] / total) * 100}%` : "0%"
-                  }}
-                ></div>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="review-summary-score">
-          <div className="review-summary-avg">{avg}</div>
-          <div className="review-summary-stars">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <span
-                key={i}
-                className={
-                  i < Math.round(avg) ? "star-icon filled" : "star-icon"
-                }
-              >
-                ★
-              </span>
+          <div className="productDetails__thumbnails">
+            {product.images.map((src, index) => (
+              <img
+                key={index}
+                src={src}
+                alt=""
+                className={`productDetails__thumb ${
+                  mainImg === src ? "productDetails__thumb--active" : ""
+                }`}
+                width={100}
+                height={100}
+                onClick={() => setMainImg(src)}
+              />
             ))}
           </div>
-          <div className="review-summary-count">{total} Reviews</div>
+        </div>
+
+        {/* ---------- info ---------- */}
+        <div className="productDetails__info">
+          <h2 className="productDetails__title">{product.title}</h2>
+          <p className="productDetails__desc">
+            {product.desc}{" "}
+            <span className="productDetails__readMore">Read more.</span>
+          </p>
+          <div className="ProductDetails_sub_info">
+            <div className="productDetails__priceWrap">
+              <h5 className="productDetails__oldPrice">M.R.P ₹{product.oldPrice}</h5>
+              <span className="productDetails__discount">
+                {product.discountLabel}
+              </span>
+              <span className="productDetails__price">
+                <span className="productDetails_price_symbol">₹</span>{product.price}
+              </span>
+            </div>
+
+            <div className="productDetails__qty">
+              <button onClick={() => setQty(Math.max(1, qty - 1))}>−</button>
+              <span>{qty}</span>
+              <button onClick={() => setQty(qty + 1)}>＋</button>
+            </div>
+          </div>
+          <div>
+            <p className="productDetails_tax_desc">Tax include. Shipping calculated at checkout.</p>
+          </div>
+          <button className="btn addToCart">Add to Cart</button>
+          <button className="btn buyNow">Buy Now</button>
         </div>
       </div>
-    </div>
-    {/* reviewCard  */}
-    <div>
-      {/* <ReviewCard/> */}
-      <Reviews/>
-    </div>
-   {/* other products */}
-   <div className="other_products">
-    <h5>Other products:</h5>
+
+      {/* Product Details - Full width section */}
+      <div className="productDetails_desc_under_buynow">
+        <div>
+          <h4 className="productDetails_desc_under_buynow_heading">Product details:</h4>
+          <p>{product.desc}</p>
+        </div>
+        <div>
+          <h4 className="productDetails_desc_under_buynow_heading">Highlights:</h4>
+          <ul className="productDetails__highlights">
+            {product.highlights.map((point, i) => (
+              <li key={i}>{point}</li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <table className="productDetails__table">
+            <thead>
+              <tr>
+                <th>Nutrient</th>
+                <th>Amount (per 50g)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {product.nutrition.map((item, i) => (
+                <tr key={i}>
+                  <td>{item.nutrient}</td>
+                  <td>{item.amount}</td>
+                </tr>
+              ))}
+              <tr className="table-bottom-text">
+                <td colSpan={2} style={{ textAlign: "center" }}>
+                  *Daily Values are based on FASSAI RDA.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Reviews Section - Full width */}
+      <div className="review-summary-container">
+        <h3 className="review-summary-title">Reviews:</h3>
+        <div className="review-summary-main">
+          <div className="review-summary-bars">
+            {[5, 4, 3, 2, 1].map((star, idx) => (
+              <div className="review-summary-bar-row" key={star}>
+                <span className="review-summary-star">
+                  {star} <span className="star-icon">⭐</span>
+                </span>
+                <div className="review-summary-bar-bg">
+                  <div
+                    className="review-summary-bar-fill"
+                    style={{
+                      width: total ? `${(ratingCounts[5 - star] / total) * 100}%` : "0%"
+                    }}
+                  ></div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="review-summary-score">
+            <div className="review-summary-avg">{avg}</div>
+            <div className="review-summary-stars">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <span
+                  key={i}
+                  className={
+                    i < Math.round(avg) ? "star-icon filled" : "star-icon"
+                  }
+                >
+                  ★
+                </span>
+              ))}
+            </div>
+            <div className="review-summary-count">{total} Reviews</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Review Cards */}
+      <div>
+        <Reviews />
+      </div>
+
+      {/* Other Products - Full width */}
+      <div className="other_products">
+        <h5>Other products:</h5>
         <div className="other_products_images">
-          {product.images?.slice(1, 3).map((p) => (
-            <img key={p.id} src={p.images} alt={p.title} />
+          {product.images?.slice(1, 3).map((img, index) => (
+            <img key={index} src={img} alt={`Product ${index + 1}`} />
           ))}
         </div>
-   </div>
-      
+      </div>
     </section>
   );
 }

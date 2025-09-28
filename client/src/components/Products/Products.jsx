@@ -54,7 +54,7 @@ import ProductCard from "../Cards/ProductCard";
 // import ProductCardDesktop from "../ProductCardDesktop/ProductCardDesktop";
 import { products as mock } from "../../assets/productsMock";
 
-const categories = ["Nutri Bar", "Dosa Mix", "Breakfast Mix", "Pancake Mix"];
+const categories = ["Nutri Bar", "Dosa Mix", "Breakfast Mix", "Pancake Mix", "Spreads"];
 
 const Products = () => {
   const [activeCat, setActiveCat] = useState("Nutri Bar");

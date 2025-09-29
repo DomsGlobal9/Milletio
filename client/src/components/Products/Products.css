@@ -188,6 +188,19 @@
     width: auto;                  /* override earlier 100 px     */
     border-bottom-width: 3px;     /* a touch thicker for clarity */
   }
+  .arrow{
+    display: none;
+  }
+  .pCard__btn{
+    font-size: 12px;
+    width: 100px;
+  }
+  .pCard__heart{
+    border:#080707;
+  }
+  .pCard__img{
+    width: 150px;
+  }
 }
 
 /* ============================================================
@@ -272,7 +285,7 @@
   width: 28px;
   height: 28px;
   padding: 0;
-  border: white;
+  border: rgb(52, 50, 50);
   background: none;
   cursor: pointer;
 }

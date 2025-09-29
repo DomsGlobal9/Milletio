@@ -4,7 +4,7 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../components/Products/Products.css";
-import { useState } from "react";
+// import { useState } from "react";
 import { StateContext, useWishlist } from "../../context/DataShare";    
 import SignInModal from "../Model/Model";
 import Cookies from 'js-cookie';
@@ -40,7 +40,7 @@ const ProductCard = ({ id, title, img, price, onAddToCart }) => {
           </span>
 
           {/* keep “Add to cart” from triggering the navigation */}
-       <div style={{display:"flex",justifyContent:'space-between',gap:'2.5px' }}>
+       <div style={{display:"flex",justifyContent:'space-between',gap:'3px' }}>
 
           <button
             className="pCard__btn"
@@ -85,7 +85,7 @@ const ProductCard = ({ id, title, img, price, onAddToCart }) => {
           width="20"
           height="20"
           fill={liked ? "#e0245e" : "none"}
-          stroke={liked ? "#e0245e" : "white"}
+          stroke={liked ? "#e0245e" : "black"}
           strokeWidth="2"
         >
           <path d="M12 21s-6.3-4.35-9.5-8.55C-1 7.49 2.42 2 7.5 2 9.74 2 12 3.44 12 3.44S14.26 2 16.5 2c5.08 0 8.5 5.49 5 10.45C18.3 16.65 12 21 12 21z" />

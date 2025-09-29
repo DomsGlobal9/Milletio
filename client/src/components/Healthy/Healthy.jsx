@@ -19,7 +19,6 @@ const Healthy=()=> {
   }, []);
   return (
     <section className="healthy">
-
       {/* ─── 1. Headline with bar stacks ─────────────────────────────── */}
       <header className="headline">
         <img src={barStackL}  data-aos="fade-right"

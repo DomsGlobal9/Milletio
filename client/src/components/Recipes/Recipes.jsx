@@ -1,11 +1,14 @@
 // RecipeList.jsx
-import React from "react";
+import {React,useState} from "react";
+
 import recipes from "../../assets/reciepesMock";
 import RecipeCard from "../Cards/RecipeCard";
 import "./Recipes.css";
+import RecipeDetailsModal from "../Model/RecipeDetailsModal";
 
 export default function Recipes() {
-  
+    const [selectedRecipe, setSelectedRecipe] = useState(null);
+
   return (
     <section className="recipes-section">
       <div className="recipes-section__header">
@@ -14,9 +17,18 @@ export default function Recipes() {
       </div>
       <div className="recipes-section__carousel">
         {recipes.map(recipe => (
-          <RecipeCard key={recipe.id} recipe={recipe} />
+          
+            <div key={recipe.id} onClick={() => setSelectedRecipe(recipe)}>
+          <RecipeCard  recipe={recipe} />
+          </div>
         ))}
       </div>
+      
+       <RecipeDetailsModal
+        recipe={selectedRecipe}
+        isOpen={!!selectedRecipe}
+        onClose={() => setSelectedRecipe(null)}
+      />
       {/* <div className="recipes-section__dots">
         {recipes.map((_, idx) => (
           <span className={`dot${idx === 0 ? " active" : ""}`} key={idx}></span>
@@ -32,6 +44,7 @@ export default function Recipes() {
           ></span>
         ))}
       </div>
+
 
     </section>
   );

@@ -29,7 +29,7 @@ export default function Navbar() {
     { label: "Products", href: "/shop" },
     { label: "Our Community", href: "/community" },
     { label: "Our Story", href: "/story" },
-    {label: "Blogs", href: "/story"}
+    {label: "Blogs", href: "https://www.newindianexpress.com/cities/hyderabad/2025/Apr/08/power-packed-millets-for-all-at-milletio"}
     
   ];
   return (
@@ -61,20 +61,28 @@ export default function Navbar() {
         <div className="navbar__logo">
           <Link to="/"><img src={milletioLogo} alt="Milletio logo" /></Link>
         </div>      
-        <ul className="navbar__links">
-          {desktopNavLinks
-            .filter(l => l.label !== "Profile") // Remove Profile from inline links
-            .map((l) => (
-              <li key={l.label}>
-                <Link to={l.href}>{l.label}</Link>
-              </li>
-            ))}
-        </ul>
+     <ul className="navbar__links">
+  {desktopNavLinks
+    .filter(l => l.label !== "Profile")
+    .map((l) => (
+      <li key={l.label}>
+        {l.href.startsWith("http") ? (
+          <a href={l.href} target="_blank" rel="noopener noreferrer">
+            {l.label}
+          </a>
+        ) : (
+          <Link to={l.href}>{l.label}</Link>
+        )}
+      </li>
+    ))}
+</ul>
+
         {/* cart / wishlist */}
         <div className="cart_and_heart">
             <Link to="/profile"><img src={profileIcon} alt="Profile" className="profile-icon" /></Link>
           <Link to="/wishlist"><img src={heartIcon} alt="Wishlist" /></Link>
           <Link to="/cart"><img src={cartIcon}  alt="Cart" /></Link>
+          
         </div>
       </nav>
 

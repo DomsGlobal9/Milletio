@@ -134,28 +134,187 @@
 // }
 
 /////////////////////////////////////////////////////////////////////
-import React, { useState,useRef } from "react";
+// import React, { useState,useRef } from "react";
+// import "./Profile.css";
+
+// /* --------- import your own icons / bitmaps --------- */
+// // import avatarPlaceholder from "../../assets/profile_avatar.png";   // 120×120 px base
+// // import addBadgeIcon      from "../../assets/icon_add.png";        // small “+” badge
+// // import nameIcon          from "../../assets/icon_user.png";
+// // import calendarIcon      from "../../assets/icon_calendar.png";
+// // import phoneIcon         from "../../assets/icon_phone.png";
+// // import emailIcon         from "../../assets/icon_mail.png";
+
+//  import avatarImg from "../../assets/Edit_Profile2.svg";
+// // import editIcon  from "../../assets/Profile_icon (2).svg";
+// import userIcon  from "../../assets/Profile_icon (2).svg";
+// import dobIcon   from "../../assets/Dob_icon.svg";
+// import phoneIcon from "../../assets/phone_icon.svg";
+// import mailIcon  from "../../assets/email_icon.svg";
+
+
+// export default function Profile() {
+//      const [avatar, setAvatar] = useState(avatarImg);
+//   const fileRef = useRef(null);
+//   const [form, setForm] = useState({
+//     name: "",
+//     dob: "",
+//     phone: "",
+//     email: "",
+//   });
+
+//   const handleChange = (e) =>
+//     setForm({ ...form, [e.target.name]: e.target.value });
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     console.log("Profile saved →", form);
+//   };
+
+//   const handleAvatarClick = () => fileRef.current?.click();
+
+//   const handleAvatarChange = (e) => {
+//     const file = e.target.files[0];
+//     if (!file) return;
+
+//     /* preview immediately */
+//     const url = URL.createObjectURL(file);
+//     setAvatar(url);
+
+//     /* TODO: send `file` to your server here
+//        then replace `url` with the final CDN / S3 URL
+//        you get back from the upload response.           */
+//   };
+
+//   return (
+//     <main className="profile">
+//       <h1 className="profile__title">Edit profile</h1>
+
+//       {/* ---------------- avatar ---------------- */}
+//           <div className="avatar" onClick={handleAvatarClick}>
+//           {avatar ? (
+//           <img src={avatar} alt="avatar" />
+//         ) : (
+//           <div style={{borderRadius:"23px",padding:"0",margin:"0"}} />
+//         )}
+
+//         {/* hidden file picker */}
+//         <input
+//           type="file"
+//           accept="image/*"
+//           ref={fileRef}
+//           onChange={handleAvatarChange}
+//           style={{ display: "none" }}
+//         />
+//       </div>
+
+//       <form className="form" onSubmit={handleSubmit}>
+//         {/* ---------- Full name ---------- */}
+//         <label className="field">
+//           <span className="field__label">Full Name</span>
+//           <div className="field__inputWrap">
+//             <img src={userIcon} alt="" className="field__icon" />
+//             <input
+//               type="text"
+//               name="name"
+//               placeholder="Enter the Name"
+//               value={form.name}
+//               onChange={handleChange}
+//               required
+//             />
+//           </div>
+//         </label>
+
+//         {/* ---------- Date of birth ---------- */}
+//         <label className="field">
+//           <span className="field__label">Date of Birth</span>
+//           <div className="field__inputWrap">
+//             <img src={dobIcon} alt="" className="field__icon" />
+//             <input
+//               type="date"
+//               name="dob"
+//               value={form.dob}
+//               onChange={handleChange}
+//               required
+//             />
+//           </div>
+//         </label>
+
+//         {/* ---------- Phone ---------- */}
+//         <label className="field">
+//           <span className="field__label">Phone Number</span>
+//           <div className="field__inputWrap">
+//             <img src={phoneIcon} alt="" className="field__icon" />
+//             <input
+//               type="tel"
+//               name="phone"
+//               placeholder="Enter the Phone number"
+//               value={form.phone}
+//               onChange={handleChange}
+//               required
+//             />
+//           </div>
+//         </label>
+
+//         {/* ---------- Email ---------- */}
+//         <label className="field">
+//           <span className="field__label">Email</span>
+//           <div className="field__inputWrap">
+//             <img src={mailIcon} alt="" className="field__icon" />
+//             <input
+//               type="email"
+//               name="email"
+//               placeholder="Enter Email"
+//               value={form.email}
+//               onChange={handleChange}
+//               required
+//             />
+//           </div>
+//         </label>
+
+//         {/* ---------- actions ---------- */}
+//         <div className="actions">
+//           <button
+//             type="button"
+//             className="btn btn--ghost"
+//             onClick={() => window.history.back()}
+//           >
+//             Cancel
+//           </button>
+//           <button type="submit" className="btn btn--primary">
+//             Save
+//           </button>
+//         </div>
+//       </form>
+//     </main>
+//   );
+// }
+
+
+
+
+
+
+
+
+
+import React, { useState, useRef, useEffect } from "react";
 import "./Profile.css";
+import { useAuth } from "../../context/DataShare";
+import { useNavigate } from "react-router-dom";
 
-/* --------- import your own icons / bitmaps --------- */
-// import avatarPlaceholder from "../../assets/profile_avatar.png";   // 120×120 px base
-// import addBadgeIcon      from "../../assets/icon_add.png";        // small “+” badge
-// import nameIcon          from "../../assets/icon_user.png";
-// import calendarIcon      from "../../assets/icon_calendar.png";
-// import phoneIcon         from "../../assets/icon_phone.png";
-// import emailIcon         from "../../assets/icon_mail.png";
-
- import avatarImg from "../../assets/Edit_Profile2.svg";
-// import editIcon  from "../../assets/Profile_icon (2).svg";
-import userIcon  from "../../assets/Profile_icon (2).svg";
-import dobIcon   from "../../assets/Dob_icon.svg";
+import avatarImg from "../../assets/Edit_Profile2.svg";
+import userIcon from "../../assets/Profile_icon (2).svg";
+import dobIcon from "../../assets/Dob_icon.svg";
 import phoneIcon from "../../assets/phone_icon.svg";
-import mailIcon  from "../../assets/email_icon.svg";
-
+import mailIcon from "../../assets/email_icon.svg";
 
 export default function Profile() {
-     const [avatar, setAvatar] = useState(avatarImg);
+  const { user, updateUserProfile, loading } = useAuth();
+  const navigate = useNavigate();
+  const [avatar, setAvatar] = useState(avatarImg);
   const fileRef = useRef(null);
+  
   const [form, setForm] = useState({
     name: "",
     dob: "",
@@ -163,12 +322,47 @@ export default function Profile() {
     email: "",
   });
 
+  // ✅ Load user data when component mounts or user changes
+  useEffect(() => {
+    if (user) {
+      setForm({
+        name: user.name || "",
+        dob: user.dob || "",
+        phone: user.phone || "",
+        email: user.email || "",
+      });
+      
+      // Set avatar from Firebase or custom upload
+      if (user.avatar) {
+        setAvatar(user.avatar);
+      }
+    }
+  }, [user]);
+
+  // ✅ Redirect to login if not authenticated
+  useEffect(() => {
+    if (!loading && !user) {
+      navigate("/login");
+    }
+  }, [user, loading, navigate]);
+
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    // ✅ Update user profile in context
+    updateUserProfile({
+      ...form,
+      avatar: avatar
+    });
+    
     console.log("Profile saved →", form);
+    alert("Profile updated successfully!");
+    
+    // TODO: Later send to backend API
+    // await axios.put('/api/user/profile', { ...form, avatar });
   };
 
   const handleAvatarClick = () => fileRef.current?.click();
@@ -177,28 +371,34 @@ export default function Profile() {
     const file = e.target.files[0];
     if (!file) return;
 
-    /* preview immediately */
     const url = URL.createObjectURL(file);
     setAvatar(url);
 
-    /* TODO: send `file` to your server here
-       then replace `url` with the final CDN / S3 URL
-       you get back from the upload response.           */
+    // TODO: Upload to server/Firebase Storage later
+    // const formData = new FormData();
+    // formData.append('avatar', file);
+    // await axios.post('/api/user/avatar', formData);
   };
+
+  if (loading) {
+    return <div className="profile">Loading...</div>;
+  }
+
+  if (!user) {
+    return null; // Will redirect to login
+  }
 
   return (
     <main className="profile">
       <h1 className="profile__title">Edit profile</h1>
 
-      {/* ---------------- avatar ---------------- */}
-          <div className="avatar" onClick={handleAvatarClick}>
-          {avatar ? (
+      <div className="avatar" onClick={handleAvatarClick}>
+        {avatar ? (
           <img src={avatar} alt="avatar" />
         ) : (
-          <div style={{borderRadius:"23px",padding:"0",margin:"0"}} />
+          <div style={{ borderRadius: "23px", padding: "0", margin: "0" }} />
         )}
 
-        {/* hidden file picker */}
         <input
           type="file"
           accept="image/*"
@@ -209,7 +409,6 @@ export default function Profile() {
       </div>
 
       <form className="form" onSubmit={handleSubmit}>
-        {/* ---------- Full name ---------- */}
         <label className="field">
           <span className="field__label">Full Name</span>
           <div className="field__inputWrap">
@@ -225,7 +424,6 @@ export default function Profile() {
           </div>
         </label>
 
-        {/* ---------- Date of birth ---------- */}
         <label className="field">
           <span className="field__label">Date of Birth</span>
           <div className="field__inputWrap">
@@ -240,7 +438,6 @@ export default function Profile() {
           </div>
         </label>
 
-        {/* ---------- Phone ---------- */}
         <label className="field">
           <span className="field__label">Phone Number</span>
           <div className="field__inputWrap">
@@ -256,7 +453,6 @@ export default function Profile() {
           </div>
         </label>
 
-        {/* ---------- Email ---------- */}
         <label className="field">
           <span className="field__label">Email</span>
           <div className="field__inputWrap">
@@ -272,12 +468,11 @@ export default function Profile() {
           </div>
         </label>
 
-        {/* ---------- actions ---------- */}
         <div className="actions">
           <button
             type="button"
             className="btn btn--ghost"
-            onClick={() => window.history.back()}
+            onClick={() => navigate("/")}
           >
             Cancel
           </button>

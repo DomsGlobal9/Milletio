@@ -1,31 +1,28 @@
-
-// export default ProductCard;
-// …imports stay the same …
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../components/Products/Products.css";
-// import { useState } from "react";
 import { StateContext, useWishlist } from "../../context/DataShare";    
-import SignInModal from "../Model/Model";
 import Cookies from 'js-cookie';
-const ProductCard = ({ id, title, img, price, onAddToCart }) => {
 
-  const {open,setOpen}=useContext(StateContext)
+const ProductCard = ({ id, title, img, price, onAddToCart }) => {
+  const {open, setOpen} = useContext(StateContext);
   const navigate = useNavigate();
   const handleCardClick = () => navigate(`/products/${id}`);
-    const { wishlist, toggleWishlist } = useWishlist();            // NEW
+  const { wishlist, toggleWishlist } = useWishlist();
   const liked = wishlist.includes(id);  
 
-  const CheckLogin=()=>{
+  const CheckLogin = () => {
     const token = Cookies.get('token');
-    if(!token){
-      setOpen(true)
+    if (!token) {
+      setOpen(true);
+      return false;
     }
-  }
+    return true;
+  };
 
   return (
     <article className="pCard" onClick={handleCardClick}>
-  <div className="pCard__text">
+      <div className="pCard__text">
         <h3>{title}</h3>
 
         <div className="pCard_sub_text">
@@ -39,62 +36,60 @@ const ProductCard = ({ id, title, img, price, onAddToCart }) => {
             <span className="pCard_rupee_symbol">₹</span> {price}
           </span>
 
-          {/* keep “Add to cart” from triggering the navigation */}
-       <div style={{display:"flex",justifyContent:'space-between',gap:'3px' }}>
-
-          <button
-            className="pCard__btn"
-            onClick={(e) => {
-              e.stopPropagation();
-              onAddToCart?.(id);
-              CheckLogin()
-            }}
-          >
-            Buy Now
-          </button>
+          <div style={{display:"flex", justifyContent:'space-between', gap:'3px'}}>
             <button
-            className="pCard__btn"
-            onClick={(e) => {
-              e.stopPropagation();
-              onAddToCart?.(id);
-              CheckLogin()
-            }}
-          >
-            Add to cart
-          </button>
-       </div>
+              className="pCard__btn"
+              onClick={(e) => {
+                e.stopPropagation();
+                if (CheckLogin()) {
+                  onAddToCart?.(id);
+                }
+              }}
+            >
+              Buy Now
+            </button>
+            
+            <button
+              className="pCard__btn"
+              onClick={(e) => {
+                e.stopPropagation();
+                if (CheckLogin()) {
+                  onAddToCart?.(id);
+                }
+              }}
+            >
+              Add to cart
+            </button>
+          </div>
         </div>
       </div>
-      {/* ⬇︎  just this wrapper + button added */}
+
       <div className="pCard__imgWrap">
         <img className="pCard__img" src={img} alt={title} loading="lazy" />
 
         <button
           className="pCard__heart"
-           aria-label={liked ? "Remove from wishlist" : "Add to wishlist"}
+          aria-label={liked ? "Remove from wishlist" : "Add to wishlist"}
           onClick={(e) => {
-            e.stopPropagation();      // prevent navigation
-            /* TODO: toggle wishlist here */
-             toggleWishlist(id); 
+            e.stopPropagation();
+            toggleWishlist(id); 
           }}
-          
         >
-          {/* use inline SVG or an icon file – outline / filled swap up to you */}
-        <svg
-          viewBox="0 0 24 24"
-          width="20"
-          height="20"
-          fill={liked ? "#e0245e" : "none"}
-          stroke={liked ? "#e0245e" : "black"}
-          strokeWidth="2"
-        >
-          <path d="M12 21s-6.3-4.35-9.5-8.55C-1 7.49 2.42 2 7.5 2 9.74 2 12 3.44 12 3.44S14.26 2 16.5 2c5.08 0 8.5 5.49 5 10.45C18.3 16.65 12 21 12 21z" />
-        </svg>
+          <svg
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            fill={liked ? "#e0245e" : "none"}
+            stroke={liked ? "#e0245e" : "black"}
+            strokeWidth="2"
+          >
+            <path d="M12 21s-6.3-4.35-9.5-8.55C-1 7.49 2.42 2 7.5 2 9.74 2 12 3.44 12 3.44S14.26 2 16.5 2c5.08 0 8.5 5.49 5 10.45C18.3 16.65 12 21 12 21z" />
+          </svg>
         </button>
       </div>
-      <SignInModal open={open} onClose={() => setOpen(false)}/>
+      
+      {/* ❌ REMOVED: <SignInModal open={open} onClose={() => setOpen(false)}/> */}
     </article>
-    
   );
 };
 

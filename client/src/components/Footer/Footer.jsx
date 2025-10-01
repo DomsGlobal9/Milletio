@@ -20,7 +20,7 @@ const Footer = () => (
      {/* --- logo --- */}
      {/* <div className="footer"> */}
      <div className="mobile_view " 
-     style={{
+     style={{ 
       backgroundImage: `url(${footerBg})`,
       backgroundSize: "cover",
       backgroundPosition: "center",

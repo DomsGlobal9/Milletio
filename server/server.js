@@ -1,18 +1,38 @@
+// Load environment variables FIRST before anything else
+import dotenv from 'dotenv';
+dotenv.config();
+
 import express from 'express';
-import pool from './db.js'; // adjust if you're using CommonJS
 import cors from 'cors';
-import productRoutes from './routes/productRoutes.js'; 
+import paymentRoutes from './src/routes/payment.js';
+
+// Debug: Check if .env is loaded
+console.log('\n=== SERVER ENVIRONMENT CHECK ===');
+console.log('Key ID:', process.env.RAZORPAY_KEY_ID?.substring(0, 20) + '...');
+console.log('Key ID Full Length:', process.env.RAZORPAY_KEY_ID?.length);
+console.log('Key Secret:', process.env.RAZORPAY_KEY_SECRET ? '✅ Loaded (Length: ' + process.env.RAZORPAY_KEY_SECRET.length + ')' : '❌ Not Found');
+console.log('================================\n');
+
 const app = express();
-// app.use(express.json());
 
-
-app.use(cors({ origin: '*' })); // allow React dev server
+app.use(cors({ origin: '*' })); // In production, specify your frontend URL
 app.use(express.json());
-// Sample API to fetch users
-// app.use('/api/products', productRoutes);
 
+// Payment routes - this connects to /api/payment
+app.use('/api/payment', paymentRoutes);
 
+// Health check
+app.get('/', (req, res) => {
+  res.send('Server is running');
+});
 
-app.listen(5000, () => {
-  console.log('Server is running on port 5000');
+// Test endpoint
+app.get('/test', (req, res) => {
+  res.json({ message: 'Server is working!' });
+});
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

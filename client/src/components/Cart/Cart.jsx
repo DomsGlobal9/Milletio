@@ -16,7 +16,7 @@ const MOCK_CART = [
 // Replace with your TEST Razorpay Key ID (same as in .env file)
 const RAZORPAY_KEY_ID = "rzp_test_RPEZriNZHFlMQ9"; // ✅ TEST KEY
 // const RAZORPAY_KEY_ID ="rzp_live_RP63WpmWU8dM5w";
-const API_URL = "http://localhost:5000/api/payment";
+const API_URL = "https://milletio.onrender.com/api/payment";
 
 export default function Cart() {
   const [items, setItems] = useState(MOCK_CART);
